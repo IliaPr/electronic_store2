@@ -1,5 +1,6 @@
 from utils.main import Items
 import pytest
+import os
 
 def test_total_price():
     item1 = Items('Компьютер', 10000, 3)
@@ -18,3 +19,17 @@ def test_new_price2():
     item4 = Items('Phone', 'Phone', 9)
     with pytest.raises(TypeError):
         item4.new_price()
+
+def test_name_setter():
+    item5 = Items('СуперСмартфон', 10000, 2)
+    with pytest.raises(Exception):
+        item5.name()
+
+def test_is_integer():
+    x = 5.0
+    y = 4.7
+    assert Items.is_integer(x) == True
+    assert Items.is_integer(y) == False
+
+def test_instantiate_from_csv_length():
+    assert len(Items.instantiate_from_csv(os.path.join('utils', 'items.csv'))) == 5
