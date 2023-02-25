@@ -25,11 +25,10 @@ class Items:
             self.__name = value
 
     @classmethod
-    def instantiate_from_csv(cls):
-        #path = os.path.join('utils', 'items.csv')
+    def instantiate_from_csv(cls, file):
         '''Создание экземпляров класса из файла items.csv'''
         item = []
-        with open('items.csv', 'r', encoding='windows-1251') as f:
+        with open(file, 'r', encoding='windows-1251') as f:
             data = csv.DictReader(f)
             for i in data:
                 name = i['name']
@@ -53,5 +52,8 @@ class Items:
         self.price = self.price * self.discount
         return self.price
 
-#Items.instantiate_from_csv()  # создание объектов из данных файла
-#print(len(Items.all_names))
+if __name__ == '__main__':
+    Items.instantiate_from_csv('items.csv') # создание объектов из данных файла
+    print(len(Items.all_names))
+    item1 = Items.all_names[0]
+    print(item1.name)
