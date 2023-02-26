@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "electronic-store2"
+version = "0.1.0"
+description = ""
+authors = ["IliaPr <ilya.prianichnikov@gmail.com>"]
+readme = "README.md"
+packages = [{include = "electronic_store2"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
