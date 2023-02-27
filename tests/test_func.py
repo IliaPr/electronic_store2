@@ -33,3 +33,11 @@ def test_is_integer():
 
 def test_instantiate_from_csv_length():
     assert len(Items.instantiate_from_csv(os.path.join('utils', 'items.csv'))) == 5
+
+def test_repr():
+    item1 = Items("Смартфон", 10000, 20)
+    assert item1.__repr__() == 'Item("Смартфон", 10000, 20)'
+
+def test_str():
+    item1 = Items("Смартфон", 10000, 20)
+    assert item1.__str__() == "Смартфон"

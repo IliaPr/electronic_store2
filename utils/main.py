@@ -52,8 +52,10 @@ class Items:
         self.price = self.price * self.discount
         return self.price
 
-if __name__ == '__main__':
-    Items.instantiate_from_csv('items.csv') # создание объектов из данных файла
-    print(len(Items.all_names))
-    item1 = Items.all_names[0]
-    print(item1.name)
+    def __repr__(self):
+        return f'Item("{self.__name}", {self.price}, {self.amt})'
+
+    def __str__(self):
+        return self.__name
+
+
