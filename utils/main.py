@@ -85,6 +85,8 @@ class Phone(Items):
     def __repr__(self):
         return f'Item("{self.name}", {self.price}, {self.amt}, {self.num_sims})'
 
+
+
 if __name__ == '__main__':
     phone1 = Phone("iPhone 14", 120_000, 5, 2)
     print(phone1)
