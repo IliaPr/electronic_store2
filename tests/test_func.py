@@ -39,3 +39,6 @@ def test_repr():
 def test_str():
     item1 = Items("Смартфон", 10000, 20)
     assert item1.__str__() == "Смартфон"
+
+def test_instantiate_from_csv_length():
+    assert len(Items.instantiate_from_csv(os.path.join('utils', 'items.csv'))) == 5
