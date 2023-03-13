@@ -98,7 +98,6 @@ if __name__ == '__main__':
     #phone1 = Phone("iPhone 14", 120_000, 5, 2)
     #print(phone1)
     #print(repr(phone1))
-    #phone1.num_sims = 0
     #Items.instantiate_from_csv('data.csv')
     Items.instantiate_from_csv('items2.csv')
 
