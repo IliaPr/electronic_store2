@@ -1,4 +1,5 @@
 import csv
+from utils.InstantiateError import InstantiateCSVError #импорт класса исключения
 class Items:
     all_names = [] #атрибут хранения созданных экземпляров
     discount = 0.85 #атрибут хранения уровня цен
@@ -27,14 +28,20 @@ class Items:
     def instantiate_from_csv(cls, file):
         '''Создание экземпляров класса из файла items.csv'''
         item = []
-        with open(file, 'r', encoding='windows-1251') as f:
-            data = csv.DictReader(f)
-            for i in data:
-                name = i['name']
-                price = i['price']
-                amt = i['quantity']
-                item.append(cls(name, price, amt))
-            return item
+        try:
+            with open(file, 'r', encoding='windows-1251') as f:
+                data = csv.DictReader(f)
+                for i in data:
+                    if list(i.keys()) == ['name', 'price', 'quantity']:
+                        name = i['name']
+                        price = i['price']
+                        amt = i['quantity']
+                        item.append(cls(name, price, amt))
+                    else:
+                        raise InstantiateCSVError(f'Файл {file} поврежден!') #отработка исключения в файле, где отсутствует одна колонка
+        except FileNotFoundError:
+            raise FileNotFoundError(f'Файл {file} не найден!') #отработка исключения если файл с заданным именем отсутствует
+        return item
 
     @staticmethod
     def is_integer(amt):
@@ -88,8 +95,11 @@ class Phone(Items):
 
 
 if __name__ == '__main__':
-    phone1 = Phone("iPhone 14", 120_000, 5, 2)
-    print(phone1)
-    print(repr(phone1))
-    phone1.num_sims = 0
+    #phone1 = Phone("iPhone 14", 120_000, 5, 2)
+    #print(phone1)
+    #print(repr(phone1))
+    #phone1.num_sims = 0
+    #Items.instantiate_from_csv('data.csv')
+    Items.instantiate_from_csv('items2.csv')
+
 

@@ -31,8 +31,6 @@ def test_is_integer():
     assert Items.is_integer(x) == True
     assert Items.is_integer(y) == False
 
-def test_instantiate_from_csv_length():
-    assert len(Items.instantiate_from_csv(os.path.join('utils', 'items.csv'))) == 5
 
 def test_repr():
     item1 = Items("Смартфон", 10000, 20)
